@@ -38,6 +38,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ChartModule } from 'primeng/chart';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
+
 // Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -48,8 +49,19 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
 import { ClientesComponent } from 'src/components/tabelas/clientes/clientes.component';
-import { SidebarComponent } from 'src/components/tabelas/clientes/sidebar/sidebar.component';
+import { SidebarComponent } from 'src/components/sidebar/sidebar.component';
 import { PClientesComponent } from './pages/pClientes/pClientes.component';
+import { PChamadosComponent } from './pages/p-chamados/p-chamados.component';
+import { PProjetosComponent } from './pages/p-projetos/p-projetos.component';
+import { PUsuariosComponent } from './pages/p-usuarios/p-usuarios.component';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
+import { UsuariosComponent } from 'src/components/tabelas/usuarios/usuarios.component';
+import { ChamadosComponent } from 'src/components/tabelas/chamados/chamados.component';
+import { ProjetosComponent } from 'src/components/tabelas/projetos/projetos.component';
+import { CriarClienteComponent } from 'src/components/criarCliente/criarCliente.component';
+import { EditarClienteComponent } from 'src/components/editarCliente/editarCliente.component';
+import { ExcluirClienteComponent } from 'src/components/excluirCliente/excluirCliente.component';
+import { ChartsComponent } from 'src/components/tabelas/charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +69,18 @@ import { PClientesComponent } from './pages/pClientes/pClientes.component';
     LoginComponent,
 ClientesComponent,
 SidebarComponent,
-PClientesComponent
+PClientesComponent,
+PChamadosComponent,
+PProjetosComponent,
+PUsuariosComponent,
+CalendarioComponent,
+UsuariosComponent,
+ChamadosComponent,
+ProjetosComponent,
+CriarClienteComponent,
+EditarClienteComponent,
+ExcluirClienteComponent,
+ChartsComponent
 
 ],
   imports: [

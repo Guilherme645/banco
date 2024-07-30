@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
+import { Chamados } from './../../../app/chamados';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Table } from 'primeng/table';
-import { Cliente } from 'src/app/clientes';
 import { MatDialog } from '@angular/material/dialog';
-
+import { Table } from 'primeng/table';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { EditarClienteComponent } from 'src/components/editarCliente/editarCliente.component';
 import { CriarClienteComponent } from 'src/components/criarCliente/criarCliente.component';
 
 @Component({
-  selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.css']
+  selector: 'app-chamados',
+  templateUrl: './chamados.component.html',
+  styleUrls: ['./chamados.component.css']
 })
-export class ClientesComponent implements OnInit {
+export class ChamadosComponent implements OnInit {
 
-  clientes!: Cliente[];
+
+  Chamados!: Chamados[];
 
   loading: boolean = true;
 
@@ -32,8 +32,8 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit() {
     this.clientesService.getClientes().subscribe({
-      next: (clientes) => {
-        this.clientes = clientes;
+      next: (Chamados) => {
+        this.Chamados = Chamados;
         this.loading = false;
       },
       error: (err) => {
@@ -50,8 +50,8 @@ export class ClientesComponent implements OnInit {
   fetchClients(): void {
     this.clientesService.getClientes()
       .subscribe(
-        (response: Cliente[]) => {
-          this.clientes = response;
+        (response: Chamados[]) => {
+          this.Chamados = response;
           console.log('Clientes carregados:', response);
         },
         (error) => {
@@ -60,7 +60,7 @@ export class ClientesComponent implements OnInit {
       );
   }
 
-  editClient(cliente: Cliente): void {
+  editClient(cliente: Chamados): void {
     const dialogRef = this.dialog.open(EditarClienteComponent, {
       width: '400px',
       data: cliente
@@ -77,7 +77,7 @@ export class ClientesComponent implements OnInit {
         .subscribe(
           () => {
             console.log(`Cliente com ID ${id} excluído com sucesso.`);
-            this.fetchClients(); // Atualiza a lista de clientes
+            this.fetchClients();
           },
           (error) => {
             console.error(`Erro ao excluir cliente com ID ${id}:`, error);
@@ -103,3 +103,4 @@ export class ClientesComponent implements OnInit {
     });
   }
 }
+

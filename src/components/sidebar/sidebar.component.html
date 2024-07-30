@@ -1,0 +1,19 @@
+<div class="card flex justify-content-center">
+  <p-sidebar [(visible)]="sidebarVisible">
+    <div class="small-image"><img src="./assets/allcortex.png" alt="logo" class="small-image"></div>
+
+      <div class="flex justify-content-center flex-wrap gap-3 mb-4">
+        <p-button  icon="pi pi-home" label="Dashboard" [rounded]="true" [text]="true" [raised]="true" /> <br><br>
+        <p-button (onClick)="chamados()" icon="pi pi-list" label="Chamados" [rounded]="true" [text]="true" [raised]="true" severity="secondary " /> <br><br>
+        <p-button (onClick)="projetos()" icon="pi pi-chart-bar" label="Projetos" [rounded]="true" [text]="true" [raised]="true" severity="success " /> <br><br>
+        <p-button (onClick)="usuarios()" icon="pi pi-user" label="Usuarios" [rounded]="true" [text]="true" [raised]="true" severity="info " /> <br><br>
+        <p-button (onClick)="clientes()" icon="pi pi-users" label="Clientes" [rounded]="true" [text]="true" [raised]="true" severity="warning " /> <br><br>
+        <p-button (onClick)="tabela()"  icon="pi pi-chart-pie" label="Tabelas" [rounded]="true" [text]="true" [raised]="true" severity="help " /> <br><br>
+        <p-button   icon="pi pi-file" label="Relatórios" [rounded]="true" [text]="true" [raised]="true" severity="danger " /><br><br>
+        <p-button (onClick)="calendario()"  icon="pi pi-calendar" label="calendário" [rounded]="true" [text]="true" [raised]="true" /> <br><br>
+        <p-button   icon="pi pi-cog" label="Configurações dos Sis" [rounded]="true" [text]="true" [raised]="true" /> <br><br>
+        <p-button   icon="pi pi-sign-out" label="Sair" [rounded]="true" [text]="true" [raised]="true" /> <br><br>
+    </div>
+  </p-sidebar>
+  <p-button (onClick)="sidebarVisible = true" icon="pi pi-arrow-right" />
+</div>

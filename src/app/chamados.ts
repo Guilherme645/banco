@@ -1,4 +1,4 @@
-export interface Cliente{
+export interface Chamados{
   id?: "",
    nome: "",
    email: "",

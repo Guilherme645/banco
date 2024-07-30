@@ -1,21 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Table } from 'primeng/table';
-import { Cliente } from 'src/app/clientes';
 import { MatDialog } from '@angular/material/dialog';
-
+import { Table } from 'primeng/table';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { ClientesComponent } from '../clientes/clientes.component';
+import { Projetos } from './../../../app/projetos';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditarClienteComponent } from 'src/components/editarCliente/editarCliente.component';
 import { CriarClienteComponent } from 'src/components/criarCliente/criarCliente.component';
 
 @Component({
-  selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.css']
+  selector: 'app-projetos',
+  templateUrl: './projetos.component.html',
+  styleUrls: ['./projetos.component.css']
 })
-export class ClientesComponent implements OnInit {
-
-  clientes!: Cliente[];
+export class ProjetosComponent implements OnInit {
+  Projetos!: Projetos[];
 
   loading: boolean = true;
 
@@ -32,8 +31,8 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit() {
     this.clientesService.getClientes().subscribe({
-      next: (clientes) => {
-        this.clientes = clientes;
+      next: (Projetos) => {
+        this.Projetos = Projetos;
         this.loading = false;
       },
       error: (err) => {
@@ -50,8 +49,8 @@ export class ClientesComponent implements OnInit {
   fetchClients(): void {
     this.clientesService.getClientes()
       .subscribe(
-        (response: Cliente[]) => {
-          this.clientes = response;
+        (response: Projetos[]) => {
+          this.Projetos = response;
           console.log('Clientes carregados:', response);
         },
         (error) => {
@@ -60,14 +59,15 @@ export class ClientesComponent implements OnInit {
       );
   }
 
-  editClient(cliente: Cliente): void {
+  editClient(cliente: Projetos): void {
     const dialogRef = this.dialog.open(EditarClienteComponent, {
       width: '400px',
-      data: cliente
+      data: cliente // Passa o cliente para o diálogo de edição
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log('O diálogo foi fechado', result);
+      // Aqui você pode atualizar a lista de clientes se necessário
     });
   }
 
@@ -98,8 +98,8 @@ export class ClientesComponent implements OnInit {
   }
 
   private loadClientes(): void {
-    this.clientesService.getClientes().subscribe(clientes => {
-      this.dataSource.data = clientes;
+    this.clientesService.getClientes().subscribe(Projetos => {
+      this.dataSource.data = Projetos;
     });
   }
 }

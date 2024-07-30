@@ -1,0 +1,50 @@
+/* Estilo geral do formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+mat-form-field input {
+  height: 36px;
+}
+
+div[formGroupName="endereco"] {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+button {
+  margin-top: 10px;
+  width: calc(50% - 4px);
+  height: 36px;
+}
+
+
+button[type="button"] {
+  background-color: #83211a;
+  color: #ffffff;
+}
+
+button[type="submit"] {
+  background-color: #245a26;
+  color: #ffffff;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
