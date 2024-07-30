@@ -1,12 +1,9 @@
 export interface Cliente{
   id?: "",
    nome: "",
+   cnpj: "",
+   razaoSocial: "",
    email: "",
-   telefone:number,
-   endereco: {
-     rua:"",
-     numero: number,
-     cidade: "",
-     estado:"",
-     cep: number}
+   quantidadeDeProjetos: number;
+   endereco: ""
 }

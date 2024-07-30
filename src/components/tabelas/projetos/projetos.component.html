@@ -1,46 +1,63 @@
 <div class="card">
+  <div class="conceito" > 
+    <h1>Projetos</h1>
+  <p>Gerencie os Projetos do sistema.</p>
+  </div>
+  <hr>
+
   <p-table #dt2 [value]="Projetos" dataKey="id" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading"
-    [paginator]="true" [globalFilterFields]="['nome', 'cnpj', 'razaoSocial', 'endereco', 'quantidadeDeProjetos']"
-    [tableStyle]="{ 'min-width': '75rem' }">
-    <ng-template pTemplate="caption">
+  [paginator]="true" [globalFilterFields]="['nome', 'cnpj', 'razaoSocial', 'endereco', 'quantidadeDeProjetos']"
+  [tableStyle]="{ 'min-width': '75rem' }">
+  <ng-template pTemplate="caption">
+    <h2>Lista de Projetos</h2>
+    <div class="barra">
       <div class="flex align-items-center">
-        <i class="pi pi-search p-input-icon-left"></i>
-        <input pInputText type="text" (input)="onGlobalFilterInput($event)" placeholder="Procurar Projeto"
-          class="ml-2" />
-      </div>
-    </ng-template>
+      <i class="pi pi-search p-input-icon-left"></i>
+      <input pInputText type="text" (input)="onGlobalFilterInput($event)" placeholder="Procurar Chamados"
+        class="ml-2" />
+    </div>
+    </div>
+  </ng-template>
+  
 
     <ng-template pTemplate="header">
 
       <tr>
-        <th style="width:20%">Nome</th>
-        <th style="width:20%">CNPJ</th>
-        <th style="width:20%">Razão Social</th>
-        <th style="width:20%">Endereço</th>
-        <th style="width:50%">Quantidade de Projetos</th>
+        <th style="width: 25%">Nome do Projeto</th>
+        <th style="width:20%">Técnico</th>
+        <th style="width:20%">Cliente</th>
+        <th style="width:50%">Data De Abertura</th>
+        <th style="width:50%">Data De Fechamento</th>
+        <th style="width:50%">Status</th>
         <th style="width:20%">Ações</th>
         <th style="width:20%"></th>
+        
       </tr>
       <tr>
         <th>
-          <p-columnFilter type="text" field="nome" placeholder="Nome" ariaLabel="Filter Nome" />
+          <p-columnFilter type="text" field="nome" placeholder="Nome do Projeto" ariaLabel="Filter Nome" />
         </th>
         <th>
-          <p-columnFilter type="text" field="cnpj" placeholder="CNPJ" ariaLabel="Filter CNPJ" />
+          <p-columnFilter type="text" field="cnpj" placeholder="Técnico" ariaLabel="Filter CNPJ" />
         </th>
         <th>
-          <p-columnFilter type="text" field="razaoSocial" placeholder=" Razão Social" ariaLabel="Filter Razão Social" />
+          <p-columnFilter type="text" field="razaoSocial" placeholder="Cliente" ariaLabel="Filter Razão Social" />
         </th>
         <th>
-          <p-columnFilter type="text" field="endereco" placeholder=" Endereço" ariaLabel="Filter Endereço" />
+          <p-columnFilter type="text" field="endereco" placeholder="Data De Abertura" ariaLabel="Filter Endereço" />
         </th>
         <th>
-          <p-columnFilter type="numeric" field="quantidadeDeProjetos" placeholder=" Quantidade de Projetos"
+          <p-columnFilter type="text" field="quantidadeDeProjetos" placeholder=" Status"
             ariaLabel="Filter Quantidade de Projetos" />
         </th>
         <th>
-          <p-button mat-button (click)="openCreateDialog()" label="Adicionar" [text]="true" [raised]="true"
-            severity="success" />
+          <p-columnFilter type="text" field="quantidadeDeProjetos" placeholder=" Status"
+            ariaLabel="Filter Quantidade de Projetos" />
+        </th>
+        
+        <th>
+          <p-button mat-button (click)="openCreateDialog()" label="Criar Projetos" [text]="true" [raised]="true"
+            severity="blue-500" />
 
         </th>
         <th>
@@ -57,14 +74,17 @@
         <td>{{ cliente.razaoSocial }}</td>
         <td>{{ cliente.endereco }}</td>
         <td>{{ cliente.quantidadeDeProjetos }}</td>
+        <td>{{ cliente.quantidadeDeProjetos }}</td>
+
 
 
         <td>
           <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" [raised]="true" severity="info"
             class="button-spacing" (click)="editClient(cliente.id)"></p-button>
-          <br> <br>
+         <div class="edit">
           <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger"
             (click)="deleteClient(cliente.id)"></p-button>
+         </div> 
         </td>
       </tr>
     </ng-template>

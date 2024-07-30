@@ -1,35 +1,60 @@
 <form [formGroup]="form" (ngSubmit)="onSave()">
-  <mat-form-field>
-    <input matInput formControlName="nome" placeholder="Nome">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput formControlName="email" placeholder="Email">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput formControlName="telefone" placeholder="Telefone">
-  </mat-form-field>
-  <div formGroupName="endereco">
-    <mat-form-field>
-      <input matInput formControlName="rua" placeholder="Rua">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="numero" placeholder="Número">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="cidade" placeholder="Cidade">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="estado" placeholder="Estado">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="cep" placeholder="CEP">
-    </mat-form-field>
+  <div>
+    <label for="nome">Nome</label>
+    <input id="nome" formControlName="nome" />
+    <div *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched">
+      Nome is required.
+    </div>
   </div>
-  <div class="button-container">
-    <button mat-button type="submit">Salvar</button>
-    <button mat-button type="button" (click)="onClose()">Cancelar</button>
+
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" />
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+      Valid email is required.
+    </div>
   </div>
+
+  <div>
+    <label for="telefone">Telefone</label>
+    <input id="telefone" formControlName="telefone" />
+    <div *ngIf="form.get('telefone')?.invalid && form.get('telefone')?.touched">
+      Telefone is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="cnpj">CNPJ</label>
+    <input id="cnpj" formControlName="cnpj" />
+    <div *ngIf="form.get('cnpj')?.invalid && form.get('cnpj')?.touched">
+      CNPJ is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="razaoSocial">Razão Social</label>
+    <input id="razaoSocial" formControlName="razaoSocial" />
+    <div *ngIf="form.get('razaoSocial')?.invalid && form.get('razaoSocial')?.touched">
+      Razão Social is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="quantidadeDeProjetos">Quantidade de Projetos</label>
+    <input id="quantidadeDeProjetos" formControlName="quantidadeDeProjetos" type="number" />
+    <div *ngIf="form.get('quantidadeDeProjetos')?.invalid && form.get('quantidadeDeProjetos')?.touched">
+      Quantidade de Projetos is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="endereco">Endereço</label>
+    <input id="endereco" formControlName="endereco" />
+    <div *ngIf="form.get('endereco')?.invalid && form.get('endereco')?.touched">
+      Endereço is required.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Save</button>
+  <button type="button" (click)="onClose()">Cancel</button>
 </form>
-
-
-

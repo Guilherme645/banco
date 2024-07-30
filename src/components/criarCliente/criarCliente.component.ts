@@ -15,7 +15,7 @@ export class CriarClienteComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<CriarClienteComponent>,
     private formBuilder: FormBuilder,
-    private ClientesService: ClientesService
+    private clientesService: ClientesService
   ) {}
 
   ngOnInit(): void {
@@ -26,14 +26,10 @@ export class CriarClienteComponent implements OnInit {
     this.form = this.formBuilder.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telefone: ['', Validators.required],
-      endereco: this.formBuilder.group({
-        rua: [''],
-        numero: [''],
-        cidade: [''],
-        estado: [''],
-        cep: ['']
-      })
+      cnpj: ['', Validators.required],
+      razaoSocial: ['', Validators.required],
+      quantidadeDeProjetos: ['', Validators.required],
+      endereco: ['', Validators.required],
     });
   }
 
@@ -43,17 +39,13 @@ export class CriarClienteComponent implements OnInit {
         id: undefined,
         nome: this.form.value.nome,
         email: this.form.value.email,
-        telefone: this.form.value.telefone,
-        endereco: {
-          rua: this.form.value.endereco.rua,
-          numero: this.form.value.endereco.numero,
-          cidade: this.form.value.endereco.cidade,
-          estado: this.form.value.endereco.estado,
-          cep: this.form.value.endereco.cep
-        }
+        cnpj: this.form.value.cnpj,
+        razaoSocial: this.form.value.razaoSocial,
+        quantidadeDeProjetos: this.form.value.quantidadeDeProjetos,
+        endereco: this.form.value.endereco
       };
 
-      this.ClientesService.criarCliente(novoCliente).subscribe(
+      this.clientesService.criarCliente(novoCliente).subscribe(
         () => {
           this.dialogRef.close(novoCliente);
           window.location.reload(); // Recarrega a página

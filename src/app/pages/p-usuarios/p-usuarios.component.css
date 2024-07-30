@@ -1,14 +1,15 @@
 .small-image{
-  width: 140px;
-  margin-left: 30px;
+  width: 70px;
+  margin-left: 0px;
 }
 .usuarios {
-  margin-top: 50px;
-  margin-left: 100px;
+  margin-top: -100px;
+  margin-left: 120px;
   margin-right: 100px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Ajuste os valores conforme necessário */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); 
 }
 .sidebar{
-  margin-top: -100px;
-  margin-left: 30px;
+  margin-top: -10px;
+  margin-left: 12px;
+  width: 50px;
 }

@@ -27,4 +27,10 @@ export class ClientesService {
     const url = `${this.apiUrl}/`;
     return this.http.post(url, cliente);
   }
+  atualizarCliente(cliente: Cliente): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${cliente.id}`, cliente);
+  }
+  getClienteById(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(`${this.apiUrl}/${id}`);
+  }
 }
