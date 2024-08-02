@@ -1,45 +1,54 @@
-<mat-dialog-content>
-  <form [formGroup]="form">
-    <mat-form-field>
-      <mat-label>Nome</mat-label>
-      <input matInput formControlName="nome">
-      <mat-error *ngIf="form.controls['nome'].hasError('required')">Nome é obrigatório</mat-error>
-    </mat-form-field>
+<form [formGroup]="form" (ngSubmit)="onSave()" class="form-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="nome" placeholder="Nome">
+    <mat-error *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched">
+      Nome é obrigatório.
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email">
-      <mat-error *ngIf="form.controls['email'].hasError('required')">Email é obrigatório</mat-error>
-      <mat-error *ngIf="form.controls['email'].hasError('email')">Email inválido</mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Email">
+    <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+      Email válido é obrigatório.
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>CNPJ</mat-label>
-      <input matInput formControlName="cnpj">
-      <mat-error *ngIf="form.controls['cnpj'].hasError('required')">CNPJ é obrigatório</mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Endereço</mat-label>
+    <input matInput formControlName="endereco" placeholder="Endereço">
+    <mat-error *ngIf="form.get('endereco')?.invalid && form.get('endereco')?.touched">
+      Endereço é obrigatório.
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Razão Social</mat-label>
-      <input matInput formControlName="razaoSocial">
-      <mat-error *ngIf="form.controls['razaoSocial'].hasError('required')">Razão Social é obrigatório</mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>CNPJ</mat-label>
+    <input matInput formControlName="cnpj" placeholder="CNPJ">
+    <mat-error *ngIf="form.get('cnpj')?.invalid && form.get('cnpj')?.touched">
+      CNPJ é obrigatório.
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Quantidade de Projetos</mat-label>
-      <input matInput formControlName="quantidadeDeProjetos">
-      <mat-error *ngIf="form.controls['quantidadeDeProjetos'].hasError('required')">Quantidade de Projetos é obrigatório</mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Razão Social</mat-label>
+    <input matInput formControlName="razaoSocial" placeholder="Razão Social">
+    <mat-error *ngIf="form.get('razaoSocial')?.invalid && form.get('razaoSocial')?.touched">
+      Razão Social é obrigatória.
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Endereço</mat-label>
-      <input matInput formControlName="endereco">
-      <mat-error *ngIf="form.controls['endereco'].hasError('required')">Endereço é obrigatório</mat-error>
-    </mat-form-field>
-  </form>
-</mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Quantidade de Projetos</mat-label>
+    <input matInput formControlName="quantidadeDeProjetos" type="number" placeholder="Quantidade de Projetos">
+    <mat-error *ngIf="form.get('quantidadeDeProjetos')?.invalid && form.get('quantidadeDeProjetos')?.touched">
+      Quantidade de Projetos é obrigatória.
+    </mat-error>
+  </mat-form-field>
 
-<mat-dialog-actions>
-  <button mat-button (click)="onClose()">Cancelar</button>
-  <button mat-button (click)="onSave()" [disabled]="loading || form.invalid">Salvar</button>
-</mat-dialog-actions>
+  <div class="button-container">
+    <button severity="blue-500" type="submit" [disabled]="form.invalid || loading">Salvar</button>
+    <button mat-button type="button" (click)="onClose()">Cancelar</button>
+  </div>
+</form>

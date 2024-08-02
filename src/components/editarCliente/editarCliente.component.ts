@@ -12,66 +12,60 @@ import { Cliente } from 'src/app/clientes';
 export class EditarClienteComponent implements OnInit {
 
   
-  form!: FormGroup;
-  loading = false;
+  form!: FormGroup; // Declaring explicitly that form is of type FormGroup
+  loading = false; // Variable to indicate loading state
 
   constructor(
     private dialogRef: MatDialogRef<EditarClienteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Cliente,
     private formBuilder: FormBuilder,
-    private clientesService: ClientesService
+    private clientService: ClientesService
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
-    this.populateForm();
   }
 
   private initializeForm(): void {
     this.form = this.formBuilder.group({
-      nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      cnpj: ['', Validators.required],
-      razaoSocial: ['', Validators.required],
-      quantidadeDeProjetos: ['', Validators.required],
-      endereco: ['', Validators.required],
+      nome: [this.data.nome, Validators.required],
+      email: [this.data.email, [Validators.required, Validators.email]],
+      endereco: [this.data.endereco, Validators.required], // endereco as a single string
+      cnpj: [this.data.cnpj, Validators.required],
+      razaoSocial: [this.data.razaoSocial, Validators.required],
+      quantidadeDeProjetos: [this.data.quantidadeDeProjetos, Validators.required]
     });
-  }
-
-  private populateForm(): void {
-    if (this.data) {
-      this.form.patchValue({
-        nome: this.data.nome,
-        email: this.data.email,
-        cnpj: this.data.cnpj,
-        razaoSocial: this.data.razaoSocial,
-        quantidadeDeProjetos: this.data.quantidadeDeProjetos,
-        endereco: this.data.endereco
-      });
-    }
   }
 
   onSave(): void {
     if (this.form.valid) {
-      const updatedCliente: Cliente = {
-        id: this.data.id,  // Preserve the ID for updating
+      this.loading = true; // Start loading
+      const clienteAtualizado: Cliente = {
+        id: this.data.id,
         nome: this.form.value.nome,
         email: this.form.value.email,
+        endereco: this.form.value.endereco, // endereco as a single string
         cnpj: this.form.value.cnpj,
         razaoSocial: this.form.value.razaoSocial,
-        quantidadeDeProjetos: this.form.value.quantidadeDeProjetos,
-        endereco: this.form.value.endereco
+        quantidadeDeProjetos: this.form.value.quantidadeDeProjetos
       };
 
-      this.clientesService.atualizarCliente(updatedCliente).subscribe(
-        () => {
-          this.dialogRef.close(updatedCliente);
-          window.location.reload(); // Reload the page to reflect changes
-        },
-        (error) => {
-          console.error('Erro ao atualizar cliente:', error);
-        }
-      );
+      if (clienteAtualizado.id) {
+        this.clientService.editarCliente(clienteAtualizado.id, clienteAtualizado).subscribe(
+          () => {
+            this.loading = false;
+            this.dialogRef.close(clienteAtualizado);
+            window.location.reload();
+          },
+          (error) => {
+            this.loading = false;
+            console.error('Erro ao editar cliente:', error);
+          }
+        );
+      } else {
+        this.loading = false;
+        console.error('ID do cliente não está definido.');
+      }
     } else {
       console.error('Formulário inválido.');
     }

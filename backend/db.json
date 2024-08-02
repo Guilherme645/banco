@@ -42,21 +42,12 @@
     },
     {
       "id": "2648",
-      "nome": "dg",
-      "email": "guilherme64513@gmail.com",
-      "cnpj": "44.777.857/0001-98",
-      "razaoSocial": "dfgf",
-      "quantidadeDeProjetos": 9,
-      "endereco": "Quadra 14 Casa 86 A Setor Oeste Gama"
-    },
-    {
-      "id": "2b06",
       "nome": "GUILHERME CARVALHO DA SILVA",
       "email": "guilherme64513@gmail.com",
-      "cnpj": "3443",
-      "razaoSocial": "wrt",
-      "quantidadeDeProjetos": 4,
-      "endereco": "Quadra 14 Casa 86 A Setor Oeste Gama"
+      "endereco": "Quadra 14 Casa 86 A Setor Oeste Gama",
+      "cnpj": "44.777.857/0001-98",
+      "razaoSocial": "Empresa E Serviços",
+      "quantidadeDeProjetos": 9
     }
   ]
 }

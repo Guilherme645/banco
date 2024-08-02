@@ -1,60 +1,54 @@
-<form [formGroup]="form" (ngSubmit)="onSave()">
-  <div>
+<form [formGroup]="form" (ngSubmit)="onSave()" class="p-fluid">
+  <div class="p-field">
     <label for="nome">Nome</label>
-    <input id="nome" formControlName="nome" />
-    <div *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched">
+    <input id="nome" pInputText formControlName="nome" placeholder="Nome" />
+    <div *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched" class="p-error">
       Nome is required.
     </div>
   </div>
 
-  <div>
-    <label for="email">Email</label>
-    <input id="email" formControlName="email" />
-    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
-      Valid email is required.
-    </div>
-  </div>
-
-  <div>
-    <label for="telefone">Telefone</label>
-    <input id="telefone" formControlName="telefone" />
-    <div *ngIf="form.get('telefone')?.invalid && form.get('telefone')?.touched">
-      Telefone is required.
-    </div>
-  </div>
-
-  <div>
+  <div class="p-field">
     <label for="cnpj">CNPJ</label>
-    <input id="cnpj" formControlName="cnpj" />
-    <div *ngIf="form.get('cnpj')?.invalid && form.get('cnpj')?.touched">
+    <input id="cnpj" pInputText formControlName="cnpj" placeholder="CNPJ" />
+    <div *ngIf="form.get('cnpj')?.invalid && form.get('cnpj')?.touched" class="p-error">
       CNPJ is required.
     </div>
   </div>
 
-  <div>
+  <div class="p-field">
     <label for="razaoSocial">Razão Social</label>
-    <input id="razaoSocial" formControlName="razaoSocial" />
-    <div *ngIf="form.get('razaoSocial')?.invalid && form.get('razaoSocial')?.touched">
+    <input id="razaoSocial" pInputText formControlName="razaoSocial" placeholder="Razão Social" />
+    <div *ngIf="form.get('razaoSocial')?.invalid && form.get('razaoSocial')?.touched" class="p-error">
       Razão Social is required.
     </div>
   </div>
 
-  <div>
+  <div class="p-field">
+    <label for="email">Email</label>
+    <input id="email" pInputText formControlName="email" placeholder="Email" />
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="p-error">
+      Valid email is required.
+    </div>
+  </div>
+
+  <div class="p-field">
     <label for="quantidadeDeProjetos">Quantidade de Projetos</label>
-    <input id="quantidadeDeProjetos" formControlName="quantidadeDeProjetos" type="number" />
-    <div *ngIf="form.get('quantidadeDeProjetos')?.invalid && form.get('quantidadeDeProjetos')?.touched">
+    <input id="quantidadeDeProjetos" pInputText formControlName="quantidadeDeProjetos" type="number" placeholder="Quantidade de Projetos" />
+    <div *ngIf="form.get('quantidadeDeProjetos')?.invalid && form.get('quantidadeDeProjetos')?.touched" class="p-error">
       Quantidade de Projetos is required.
     </div>
   </div>
 
-  <div>
+  <div class="p-field">
     <label for="endereco">Endereço</label>
-    <input id="endereco" formControlName="endereco" />
-    <div *ngIf="form.get('endereco')?.invalid && form.get('endereco')?.touched">
+    <input id="endereco" pInputText formControlName="endereco" placeholder="Endereço" />
+    <div *ngIf="form.get('endereco')?.invalid && form.get('endereco')?.touched" class="p-error">
       Endereço is required.
     </div>
   </div>
 
-  <button type="submit" [disabled]="form.invalid">Save</button>
-  <button type="button" (click)="onClose()">Cancel</button>
+  <div class="p-d-flex p-jc-between">
+    <p-button label="Save" icon="pi pi-check" type="submit" [disabled]="form.invalid"></p-button><br><br>
+    <p-button label="Cancel" icon="pi pi-times" type="button" (click)="onClose()"></p-button>
+  </div>
 </form>
